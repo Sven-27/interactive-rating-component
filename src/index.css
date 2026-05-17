@@ -8,10 +8,10 @@
   --color-white: rgb(255, 255, 255);
   --color-grey-500: rgb(150,159,173);
   --color-grey-900: rgb(38,46,56);
-  --color-grey-950: (19,21,24);
+  --color-grey-950: rgb(19,21,24);
   --color-orange-500: rgb(252,118,20);
   --color-black: rgb(0,0,0);
-  --color-gradient: linear-gradient(to right, rgb(35,42,52), rgb(24,30,39));
+  --color-gradient: linear-gradient(to bottom, #232a34, #181e27);
 }
 
  @layer base {

@@ -1,6 +1,10 @@
+import { useState } from "react";
 import { FaStar } from "react-icons/fa";
 
-const Rating = () => {
+const Rating = ({ setSelected }: { setSelected: (rating: number | null) => void }) => {
+  const [selectedRating, setSelectedRating] = useState<number | null>(null);
+  const ratings: number[] = [1,2,3,4,5];
+
   return (
     <>
       <div className="size-[clamp(40px,7vw,48px)] rounded-full bg-grey-900 grid place-items-center mb-[clamp(24px,5vw,32px)]">
@@ -12,23 +16,27 @@ const Rating = () => {
           Please let us know how we did with your support request. All feedback is appreciated to help us improve our offering!
         </p>
         <ul className="flex items-center justify-between mt-6 mb-8">
-          <li className="size-[clamp(42px,7vw,52px)] rounded-full bg-grey-900 grid place-items-center hover:bg-orange-500 hover:text-white transition-colors duration-300 cursor-pointer">
-            <span className="text-grey-500 text-[clamp(14px,3vw,16px)]">1</span>
-          </li>
-          <li className="size-[clamp(42px,7vw,52px)] rounded-full bg-grey-900 grid place-items-center hover:bg-orange-500 hover:text-white transition-colors duration-300 cursor-pointer">
-            <span className="text-grey-500 text-[clamp(14px,3vw,16px)]">2</span>
-          </li>
-          <li className="size-[clamp(42px,7vw,52px)] rounded-full bg-grey-900 grid place-items-center hover:bg-orange-500 hover:text-white transition-colors duration-300 cursor-pointer">
-            <span className="text-grey-500 text-[clamp(14px,3vw,16px)]">3</span>
-          </li>
-          <li className="size-[clamp(42px,7vw,52px)] rounded-full bg-grey-900 grid place-items-center hover:bg-orange-500 hover:text-white transition-colors duration-300 cursor-pointer">
-            <span className="text-grey-500 text-[clamp(14px,3vw,16px)]">4</span>
-          </li>
-          <li className="size-[clamp(42px,7vw,52px)] rounded-full bg-grey-900 grid place-items-center hover:bg-orange-500 hover:text-white transition-colors duration-300 cursor-pointer">
-            <span className="text-grey-500 text-[clamp(14px,3vw,16px)]">5</span>
-          </li>
+          {
+            ratings.map((rating: number) => (
+              <li 
+                key={rating}
+                className={`size-[clamp(42px,7vw,52px)] rounded-full bg-grey-900 grid place-items-center hover:bg-orange-500 focus:bg-white active:bg-white focus:text-black transition-colors duration-300 cursor-pointer ${selectedRating === rating ? 'bg-orange-500' : ''}`}
+                onClick={() => {
+                  setSelectedRating(rating);
+                }}
+              >
+                <span className="text-grey-500 text-[clamp(14px,3vw,16px)]">{rating}</span>
+              </li>
+            ))
+            
+          }
         </ul>
-        <button className="w-full py-3 text-[14px] font-semibold bg-orange-500 text-black uppercase tracking-wide rounded-full hover:bg-white hover:text-orange-500 transition-colors duration-300">Submit</button>
+        <button 
+          className="w-full py-3 text-[14px] font-semibold bg-orange-500 text-black uppercase tracking-wide rounded-full hover:bg-white hover:text-orange-500 transition-colors duration-300"
+          onClick={() => setSelected(selectedRating)}
+        >
+          Submit
+        </button>
       </section>
     </>
   )

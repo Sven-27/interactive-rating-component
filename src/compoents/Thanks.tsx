@@ -1,6 +1,5 @@
-import React from 'react'
 
-const Thanks = () => {
+const Thanks = ({ selected }: { selected: number }) => {
   return (
     <>
       <img 
@@ -10,7 +9,7 @@ const Thanks = () => {
         width="162" 
         height="108"
        />
-       <p className="text-center text-orange-500 text-[clamp(14px,3vw,15px)] h-[32px] bg-grey-900 w-max mx-auto flex items-center px-[16px] rounded-3xl my-[clamp(24px,4.5vw,32px)]">You selected 4 out of 5</p>
+       <p className="text-center text-orange-500 text-[clamp(14px,3vw,15px)] h-[32px] bg-grey-900 w-max mx-auto flex items-center px-[16px] rounded-3xl my-[clamp(24px,4.5vw,32px)]">You selected {selected} out of 5</p>
        <section className="w-full text-center">
       <h1 className="text-[clamp(24px,4vw,28px)] text-white font-bold mb-[16px]">Thank you!</h1>
       <p className="text-[clamp(14px,3vw,16px)] text-grey-500">We appreciate you taking the time to give a rating. If you ever need more support, don't hesitate to get in touch!</p>

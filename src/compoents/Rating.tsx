@@ -20,19 +20,19 @@ const Rating = ({ setSelected }: { setSelected: (rating: number | null) => void 
             ratings.map((rating: number) => (
               <li 
                 key={rating}
-                className={`size-[clamp(42px,7vw,52px)] rounded-full bg-grey-900 grid place-items-center hover:bg-orange-500 focus:bg-white active:bg-white focus:text-black transition-colors duration-300 cursor-pointer ${selectedRating === rating ? 'bg-orange-500' : ''}`}
+                className={`size-[clamp(42px,7vw,52px)] rounded-full bg-grey-900 grid place-items-center active:bg-white transition-colors duration-300 cursor-pointer ${selectedRating === rating && 'bg-orange-500'}`}
                 onClick={() => {
                   setSelectedRating(rating);
                 }}
               >
-                <span className="text-grey-500 text-[clamp(14px,3vw,16px)]">{rating}</span>
+                <span className={`text-grey-500 text-[clamp(14px,3vw,16px)] active:text-black size-full rounded-full grid place-items-center ${selectedRating === rating && '!text-black'}`}>{rating}</span>
               </li>
             ))
             
           }
         </ul>
         <button 
-          className="w-full py-3 text-[14px] font-semibold bg-orange-500 text-black uppercase tracking-wide rounded-full hover:bg-white hover:text-orange-500 transition-colors duration-300"
+          className="w-full py-3 text-[14px] font-semibold bg-orange-500 text-black uppercase tracking-wide rounded-full hover:bg-white transition-colors duration-300"
           onClick={() => setSelected(selectedRating)}
         >
           Submit
